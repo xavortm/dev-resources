@@ -6,13 +6,18 @@ This is repositoy where i will be uploading snipets of code that have been modif
 
 #### Front End
 Slider for content - [Owl Carousel v2](http://www.owlcarousel.owlgraphic.com/)
+
 CSS animations - [Animate.css](https://github.com/daneden/animate.css) - the idea here is to import only the desired effect, not the whole css file... its just too much and its never used fully.
+
 Web Icons - [FontAwesome](http://fortawesome.github.io/Font-Awesome/cheatsheet/)
+
 Header scroll effect (sticky header) - [Headroom.js](https://github.com/WickyNilliams/headroom.js)
+
 
 #### WordPress Plugins
 For creating contact forms of any kind: [Contact form 7](https://wordpress.org/plugins/contact-form-7/)
 
 #### Collection of links
-How long is the content in "time to read" minutes - [readingTime.js](https://github.com/michael-lynch/reading-time) 
+How long is the content in "time to read" minutes - [readingTime.js](https://github.com/michael-lynch/reading-time)
+
 Best free stock photos site at the moment - [Unsplash](https://unsplash.com/)
