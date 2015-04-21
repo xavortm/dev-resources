@@ -16,3 +16,4 @@ This is repositoy where i will be uploading snipets of code that have been modif
 #### Collection of links
 * How long is the content in "time to read" minutes - [readingTime.js](https://github.com/michael-lynch/reading-time)
 * Best free stock photos site at the moment - [Unsplash](https://unsplash.com/)
+* Great looking animated css framework. - [Materializecss](http://materializecss.com/collapsible.html) - Could be used for some free WP theme in future.
