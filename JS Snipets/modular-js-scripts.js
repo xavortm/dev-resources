@@ -44,27 +44,21 @@ var siteEvents = (function () {
 	 * it here.
 	 */
 	var _s = {
-		menuIcon: $( ".menu-icon" ),
-		okIcon: $( ".ok" )
+		bodyElement: $( "body" )
 	};
 
 	 /**
 	  * Example function. You can write jQuery code here.
 	  * @return {[type]} [description]
 	  */
-	var _openMenu = function ( event ) {
-		$( this ).toggleClass( 'opened' );
+	var _testScript = function ( event ) {
 
 		// Only run alert if devMode == true
-		devAlert("test");
+		devAlert( "test" );
 
 		// This will print only if devMode == true
 		console.log( "test" );
 	};
-
-	var _changeOkIcon = function ( argument ) {
-		$( this ).toggleClass( 'active' );
-	}
 
 	/**
 	 * Fire all functions that will be used in the page.
@@ -72,8 +66,7 @@ var siteEvents = (function () {
 	var events = function () {
 
 		// When header is clicked.
-		_s.menuIcon.on( 'click', _openMenu );
-		_s.okIcon.on( 'click', _changeOkIcon );
+		_s.bodyElement.on( 'click', _testScript );
 	};
 
 	/**
