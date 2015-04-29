@@ -1,5 +1,24 @@
 /*
 |--------------------------------------------------------------------------
+| Developer mode
+|--------------------------------------------------------------------------
+|
+| Set to true - it will allow printing in the console. Alsways check for this
+| variables when running tests so you dont forget about certain console.logs.
+| Id needed for development testing this variable should be used.
+|
+*/
+var devMode = function() {
+	return ! true;
+};
+
+// Disable console.log for production site.
+if( devMode() ) {
+	console.log = function() {}
+}
+
+/*
+|--------------------------------------------------------------------------
 | Site Events Controlls.
 |--------------------------------------------------------------------------
 |
@@ -24,16 +43,17 @@ var siteEvents = (function () {
 	|
 	*/
 	var _s = {
-		siteHeader: $( ".site-header" ) 		// Example jquery variable
+		bodyElement: $("body")
 	};
 
 	 /**
 	  * Example function. You can write jQuery code here.
 	  * @return {[type]} [description]
 	  */
-	var _printConsole = function ( event ) {
-		var el = $(event.target);
-		console.log(el);
+	var _runConsoleLog = function ( event ) {
+
+		// This will print only if devMode == true
+		console.log("test");
 	};
 
 	/*
@@ -47,7 +67,7 @@ var siteEvents = (function () {
 	var events = function () {
 
 		// When header is clicked.
-		_s.siteHeader.on( 'click', _printConsole );
+		_s.bodyElement.on( 'click', _runConsoleLog );
 	};
 
 	/**
