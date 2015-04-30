@@ -10,14 +10,14 @@ $rem-base: 16px !default;
 $modules: () !default;
 
 @mixin exports($name) {
-  // Import from global scope
-  $modules: $modules !global;
-  // Check if a module is already on the list
-  $module_index: index($modules, $name);
-  @if (($module_index == null) or ($module_index == false)) {
-    $modules: append($modules, $name) !global;
-    @content;
-  }
+	// Import from global scope
+	$modules: $modules !global;
+	// Check if a module is already on the list
+	$module_index: index($modules, $name);
+	@if (($module_index == null) or ($module_index == false)) {
+		$modules: append($modules, $name) !global;
+		@content;
+	}
 }
 
 //
@@ -28,38 +28,38 @@ $modules: () !default;
 // RANGES
 // We use these functions to define ranges for various things, like media queries.
 @function lower-bound($range) {
-  @if length($range) <= 0 {
-    @return 0;
-  }
-  @return nth($range, 1);
+	@if length($range) <= 0 {
+		@return 0;
+	}
+	@return nth($range, 1);
 }
 
 @function upper-bound($range) {
-  @if length($range) < 2 {
-    @return 999999999999;
-  }
-  @return nth($range, 2);
+	@if length($range) < 2 {
+		@return 999999999999;
+	}
+	@return nth($range, 2);
 }
 
 // STRIP UNIT
 // It strips the unit of measure and returns it
 @function strip-unit($num) {
-  @return $num / ($num * 0 + 1);
+	@return $num / ($num * 0 + 1);
 }
 
 // CONVERT TO REM
 @function convert-to-rem($value, $base-value: $rem-base) {
-  $value: strip-unit($value) / strip-unit($base-value) * 1rem;
-  @if ($value == 0rem) { $value: 0; } // Turn 0rem into 0
-  @return $value;
+	$value: strip-unit($value) / strip-unit($base-value) * 1rem;
+	@if ($value == 0rem) { $value: 0; } // Turn 0rem into 0
+	@return $value;
 }
 
 @function data($attr) {
-  @if $namespace {
-    @return '[data-' + $namespace + '-' + $attr + ']';
-  }
+	@if $namespace {
+		@return '[data-' + $namespace + '-' + $attr + ']';
+	}
 
-  @return '[data-' + $attr + ']';
+	@return '[data-' + $attr + ']';
 }
 
 // REM CALC
@@ -67,42 +67,42 @@ $modules: () !default;
 // New Syntax, allows to optionally calculate on a different base value to counter compounding effect of rem's.
 // Call with 1, 2, 3 or 4 parameters, 'px' is not required but supported:
 //
-//   rem-calc(10 20 30px 40);
+//	rem-calc(10 20 30px 40);
 //
 // Space delimited, if you want to delimit using comma's, wrap it in another pair of brackets
 //
-//   rem-calc((10, 20, 30, 40px));
+//	rem-calc((10, 20, 30, 40px));
 //
 // Optionally call with a different base (eg: 8px) to calculate rem.
 //
-//   rem-calc(16px 32px 48px, 8px);
+//	rem-calc(16px 32px 48px, 8px);
 //
 // If you require to comma separate your list
 //
-//   rem-calc((16px, 32px, 48), 8px);
+//	rem-calc((16px, 32px, 48), 8px);
 
 @function rem-calc($values, $base-value: $rem-base) {
-  $max: length($values);
+	$max: length($values);
 
-  @if $max == 1 { @return convert-to-rem(nth($values, 1), $base-value); }
+	@if $max == 1 { @return convert-to-rem(nth($values, 1), $base-value); }
 
-  $remValues: ();
-  @for $i from 1 through $max {
-    $remValues: append($remValues, convert-to-rem(nth($values, $i), $base-value));
-  }
-  @return $remValues;
+	$remValues: ();
+	@for $i from 1 through $max {
+		$remValues: append($remValues, convert-to-rem(nth($values, $i), $base-value));
+	}
+	@return $remValues;
 }
 
 // OLD EM CALC
 // Deprecated: We'll drop support for this in 5.1.0, use rem-calc()
 @function emCalc($values) {
-  @return rem-calc($values);
+	@return rem-calc($values);
 }
 
 // OLD EM CALC
 // Deprecated: We'll drop support for this in 5.1.0, use rem-calc()
 @function em-calc($values) {
-  @return rem-calc($values);
+	@return rem-calc($values);
 }
 
 // Data attribute namespace
@@ -129,9 +129,9 @@ $base-line-height: 1.5 !default;
 // We use this to control border radius.
 // $radius - Default: $global-radius || 4px
 @mixin radius($radius:$global-radius) {
-  @if $radius {
-    border-radius: $radius;
-  }
+	@if $radius {
+	border-radius: $radius;
+	}
 }
 
 // @mixins
@@ -139,17 +139,17 @@ $base-line-height: 1.5 !default;
 // We use this to create equal side border radius on elements.
 // $side - Options: left, right, top, bottom
 @mixin side-radius($side, $radius:$global-radius) {
-  @if ($side == left or $side == right) {
-    -webkit-border-bottom-#{$side}-radius: $radius;
-    -webkit-border-top-#{$side}-radius: $radius;
-    border-bottom-#{$side}-radius: $radius;
-    border-top-#{$side}-radius: $radius;
-  } @else {
-    -webkit-#{$side}-left-radius: $radius;
-    -webkit-#{$side}-right-radius: $radius;
-    border-#{$side}-left-radius: $radius;
-    border-#{$side}-right-radius: $radius;
-  }
+	@if ($side == left or $side == right) {
+	-webkit-border-bottom-#{$side}-radius: $radius;
+	-webkit-border-top-#{$side}-radius: $radius;
+	border-bottom-#{$side}-radius: $radius;
+	border-top-#{$side}-radius: $radius;
+	} @else {
+	-webkit-#{$side}-left-radius: $radius;
+	-webkit-#{$side}-right-radius: $radius;
+	border-#{$side}-left-radius: $radius;
+	border-#{$side}-right-radius: $radius;
+	}
 }
 
 // @mixins
@@ -157,10 +157,10 @@ $base-line-height: 1.5 !default;
 // We can control whether or not we have inset shadows edges.
 // $active - Default: true, Options: false
 @mixin inset-shadow($active:true) {
-  box-shadow: $shiny-edge-size $shiny-edge-color inset;
+	box-shadow: $shiny-edge-size $shiny-edge-color inset;
 
-  @if $active { &:active {
-    box-shadow: $shiny-edge-size $shiny-edge-active-color inset; } }
+	@if $active { &:active {
+	box-shadow: $shiny-edge-size $shiny-edge-active-color inset; } }
 }
 
 // @mixins
@@ -170,16 +170,16 @@ $base-line-height: 1.5 !default;
 // $speed - Default: 300ms
 // $ease - Default:ease-out, Options: http://css-tricks.com/almanac/properties/t/transition-timing-function/
 @mixin single-transition($property:all, $speed:300ms, $ease:ease-out) {
-  transition: $property $speed $ease;
+	transition: $property $speed $ease;
 }
 
 // @mixins
 //
 // We use this to add box-sizing across browser prefixes
 @mixin box-sizing($type:border-box) {
-  -webkit-box-sizing: $type; // Android < 2.3, iOS < 4
-     -moz-box-sizing: $type;
-          box-sizing: $type; // Chrome, IE 8+, Opera, Safari 5.1
+	-webkit-box-sizing: $type; // Android < 2.3, iOS < 4
+	 -moz-box-sizing: $type;
+			box-sizing: $type; // Chrome, IE 8+, Opera, Safari 5.1
 }
 
 // @mixins
@@ -189,57 +189,45 @@ $base-line-height: 1.5 !default;
 // $triangle-color - Used to set border-color which makes up triangle. No default
 // $triangle-direction - Used to determine which direction triangle points. Options: top, bottom, left, right
 @mixin css-triangle($triangle-size, $triangle-color, $triangle-direction) {
-  border: inset $triangle-size;
-  content: "";
-  display: block;
-  height: 0;
-  width: 0;
-  @if ($triangle-direction == top) {
-    border-color: $triangle-color transparent transparent transparent;
-    border-top-style: solid;
-  }
-  @if ($triangle-direction == bottom) {
-    border-color: transparent transparent $triangle-color transparent;
-    border-bottom-style: solid;
-  }
-  @if ($triangle-direction == left) {
-    border-color: transparent transparent transparent $triangle-color;
-    border-left-style: solid;
-  }
-  @if ($triangle-direction == right) {
-    border-color: transparent $triangle-color transparent transparent;
-    border-right-style: solid;
-  }
+	border: inset $triangle-size;
+	content: "";
+	display: block;
+	height: 0;
+	width: 0;
+	@if ($triangle-direction == top) {
+	border-color: $triangle-color transparent transparent transparent;
+	border-top-style: solid;
+	}
+	@if ($triangle-direction == bottom) {
+	border-color: transparent transparent $triangle-color transparent;
+	border-bottom-style: solid;
+	}
+	@if ($triangle-direction == left) {
+	border-color: transparent transparent transparent $triangle-color;
+	border-left-style: solid;
+	}
+	@if ($triangle-direction == right) {
+	border-color: transparent $triangle-color transparent transparent;
+	border-right-style: solid;
+	}
 }
-
-// @mixins
-//
-
 
 // We use this to do clear floats
 @mixin clearfix {
-  &:before, &:after { content: " "; display: table; }
-  &:after { clear: both; }
+	&:before, &:after { content: " "; display: table; }
+	&:after { clear: both; }
 }
-
-// @mixins
-//
-
-
-// @mixins
-//
-
 
 // @mixins
 //
 // Makes an element visually hidden, but accessible.
 // @see http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
 @mixin element-invisible {
-  clip: rect(1px, 1px, 1px, 1px);
-  height: 1px;
-  overflow: hidden;
-  position: absolute !important;
-  width: 1px;
+	clip: rect(1px, 1px, 1px, 1px);
+	height: 1px;
+	overflow: hidden;
+	position: absolute !important;
+	width: 1px;
 }
 
 // @mixins
@@ -252,11 +240,11 @@ $text-direction: ltr !default;
 $default-float: left !default;
 $opposite-direction: right !default;
 @if $text-direction == ltr {
-  $default-float: left;
-  $opposite-direction: right;
+	$default-float: left;
+	$opposite-direction: right;
 } @else {
-  $default-float: right;
-  $opposite-direction: left;
+	$default-float: right;
+	$opposite-direction: left;
 }
 
 // We use this to control whether or not CSS classes come through in the gem files.
@@ -296,12 +284,12 @@ $xxlarge-up: "#{$screen} and (min-width:#{lower-bound($xxlarge-range)})" !defaul
 $xxlarge-only: "#{$screen} and (min-width:#{lower-bound($xxlarge-range)}) and (max-width:#{upper-bound($xxlarge-range)})" !default;
 
 $retina: (
-  "#{$screen} and (-webkit-min-device-pixel-ratio: 2)",
-  "#{$screen} and (min--moz-device-pixel-ratio: 2)",
-  "#{$screen} and (-o-min-device-pixel-ratio: 2/1)",
-  "#{$screen} and (min-device-pixel-ratio: 2)",
-  "#{$screen} and (min-resolution: 192dpi)",
-  "#{$screen} and (min-resolution: 2dppx)"
+	"#{$screen} and (-webkit-min-device-pixel-ratio: 2)",
+	"#{$screen} and (min--moz-device-pixel-ratio: 2)",
+	"#{$screen} and (-o-min-device-pixel-ratio: 2/1)",
+	"#{$screen} and (min-device-pixel-ratio: 2)",
+	"#{$screen} and (min-resolution: 192dpi)",
+	"#{$screen} and (min-resolution: 2dppx)"
 );
 
 // Legacy
@@ -322,122 +310,122 @@ $cursor-text-value: text !default;
 
 @include exports("global") {
 
-  // Meta styles are a dependancy of the Javascript.
-  // Used to provide media query values for javascript components.
-  // Forward slash placed around everything to convince PhantomJS to read the value.
+	// Meta styles are a dependancy of the Javascript.
+	// Used to provide media query values for javascript components.
+	// Forward slash placed around everything to convince PhantomJS to read the value.
 
-  @if $include-js-meta-styles {
+	@if $include-js-meta-styles {
 
-    meta.foundation-version {
-      font-family: "/{{VERSION}}/";
-    }
+	meta.foundation-version {
+		font-family: "/{{VERSION}}/";
+	}
 
-    meta.foundation-mq-small {
-      font-family: "/" + unquote($small-up) + "/";
-      width: lower-bound($small-range);
-    }
+	meta.foundation-mq-small {
+		font-family: "/" + unquote($small-up) + "/";
+		width: lower-bound($small-range);
+	}
 
-    meta.foundation-mq-small-only {
-      font-family: "/" + unquote($small-only) + "/";
-      width: lower-bound($small-range);
-    }
+	meta.foundation-mq-small-only {
+		font-family: "/" + unquote($small-only) + "/";
+		width: lower-bound($small-range);
+	}
 
-    meta.foundation-mq-medium {
-      font-family: "/" + unquote($medium-up) + "/";
-      width: lower-bound($medium-range);
-    }
+	meta.foundation-mq-medium {
+		font-family: "/" + unquote($medium-up) + "/";
+		width: lower-bound($medium-range);
+	}
 
-    meta.foundation-mq-medium-only {
-      font-family: "/" + unquote($medium-only) + "/";
-      width: lower-bound($medium-range);
-    }
+	meta.foundation-mq-medium-only {
+		font-family: "/" + unquote($medium-only) + "/";
+		width: lower-bound($medium-range);
+	}
 
-    meta.foundation-mq-large {
-      font-family: "/" + unquote($large-up) + "/";
-      width: lower-bound($large-range);
-    }
+	meta.foundation-mq-large {
+		font-family: "/" + unquote($large-up) + "/";
+		width: lower-bound($large-range);
+	}
 
-    meta.foundation-mq-large-only {
-      font-family: "/" + unquote($large-only) + "/";
-      width: lower-bound($large-range);
-    }
+	meta.foundation-mq-large-only {
+		font-family: "/" + unquote($large-only) + "/";
+		width: lower-bound($large-range);
+	}
 
-    meta.foundation-mq-xlarge {
-      font-family: "/" + unquote($xlarge-up) + "/";
-      width: lower-bound($xlarge-range);
-    }
+	meta.foundation-mq-xlarge {
+		font-family: "/" + unquote($xlarge-up) + "/";
+		width: lower-bound($xlarge-range);
+	}
 
-    meta.foundation-mq-xlarge-only {
-      font-family: "/" + unquote($xlarge-only) + "/";
-      width: lower-bound($xlarge-range);
-    }
+	meta.foundation-mq-xlarge-only {
+		font-family: "/" + unquote($xlarge-only) + "/";
+		width: lower-bound($xlarge-range);
+	}
 
-    meta.foundation-mq-xxlarge {
-      font-family: "/" + unquote($xxlarge-up) + "/";
-      width: lower-bound($xxlarge-range);
-    }
+	meta.foundation-mq-xxlarge {
+		font-family: "/" + unquote($xxlarge-up) + "/";
+		width: lower-bound($xxlarge-range);
+	}
 
-    meta.foundation-data-attribute-namespace {
-      font-family: #{$namespace};
-    }
+	meta.foundation-data-attribute-namespace {
+		font-family: #{$namespace};
+	}
 
-  }
+	}
 
-  @if $include-html-global-classes {
+	@if $include-html-global-classes {
 
-    // Must be 100% for off canvas to work
-    html, body { height: 100%; }
+	// Must be 100% for off canvas to work
+	html, body { height: 100%; }
 
-    // Set box-sizing globally to handle padding and border widths
-    html {
-      box-sizing: border-box;
-    }
-    *,
-    *:before,
-    *:after {
-      @include box-sizing(inherit);
-    }
+	// Set box-sizing globally to handle padding and border widths
+	html {
+		box-sizing: border-box;
+	}
+	*,
+	*:before,
+	*:after {
+		@include box-sizing(inherit);
+	}
 
-    html,
-    body { font-size: $base-font-size; }
+	html,
+	body { font-size: $base-font-size; }
 
-    // Grid Defaults to get images and embeds to work properly
-    img { max-width: 100%; height: auto; }
+	// Grid Defaults to get images and embeds to work properly
+	img { max-width: 100%; height: auto; }
 
-    img { -ms-interpolation-mode: bicubic; }
+	img { -ms-interpolation-mode: bicubic; }
 
-    .clearfix { @include clearfix; }
+	.clearfix { @include clearfix; }
 
-    // Hide visually and from screen readers
-    .hide {
-      display: none;
-    }
+	// Hide visually and from screen readers
+	.hide {
+		display: none;
+	}
 
-    // Hide visually and from screen readers, but maintain layout
-    .invisible { visibility: hidden; }
+	// Hide visually and from screen readers, but maintain layout
+	.invisible { visibility: hidden; }
 
-    // Font smoothing
-    // Antialiased font smoothing works best for light text on a dark background.
-    // Apply to single elements instead of globally to body.
-    // Note this only applies to webkit-based desktop browsers and Firefox 25 (and later) on the Mac.
-    .antialiased { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+	// Font smoothing
+	// Antialiased font smoothing works best for light text on a dark background.
+	// Apply to single elements instead of globally to body.
+	// Note this only applies to webkit-based desktop browsers and Firefox 25 (and later) on the Mac.
+	.antialiased { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
-    // Get rid of gap under images by making them display: inline-block; by default
-    img {
-      display: inline-block;
-      vertical-align: middle;
-    }
+	// Get rid of gap under images by making them display: inline-block; by default
+	img {
+		display: inline-block;
+		vertical-align: middle;
+	}
 
-    //
-    // Global resets for forms
-    //
+	//
+	// Global resets for forms
+	//
 
-    // Make sure textarea takes on height automatically
-    textarea { height: auto; min-height: 50px; }
+	// Make sure textarea takes on height automatically
+	textarea { height: auto; min-height: 50px; }
 
-    // Make select elements 100% width by default
-    select { width: 100%; }
-  }
+	// Make select elements 100% width by default
+	select { width: 100%; }
+	}
 }
 
 // @variables

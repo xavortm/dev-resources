@@ -25,6 +25,9 @@ var devAlert = function( string ) {
 // Disable console.log for production site.
 if ( ! devMode() ) {
 	console.log = function() {}
+	
+	// This is too much, so maybe keep it commented.
+	// console.error = function() {}
 }
 
 
