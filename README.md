@@ -1,6 +1,6 @@
 # Collection of resources for web development
 
-This is repositoy where i will be uploading snipets of code that have been modified to match my workflow and a list of plugins/code snipets that have been tested in real projects. The plugins are for WordPress theme development
+This is repositoy where i will be uploading snipets of code that have been modified to match my workflow and a list of plugins/code snipets, that have been tested in real projects. The plugins are for WordPress theme development
 
 ---
 
