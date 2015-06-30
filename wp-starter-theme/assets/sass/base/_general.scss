@@ -1,0 +1,39 @@
+body, html {
+	height: 100%;
+	margin-top: 0 !important;
+	position: relative;
+
+	// Remove tap delay for some stupid browsers
+	-ms-touch-action: manipulation;
+    touch-action: manipulation;
+}
+
+body {
+	font-family: $fonts-sans;
+	font-size: $font-main-size;
+	font-weight: normal;
+	color: $font-main-color;
+	// -webkit-font-smoothing: subpixel-antialiased;
+	line-height: 1.8666em;
+	height: 100%
+}
+
+::selection {
+	background-color: $color-green--500;
+	color: white;
+}
+
+/**
+ * General Typography settings.
+ * ----------------------------------------------------------------------------
+ * Standart article styling will have its own file, those are
+ * default valuse.
+ */
+
+p:first-child {
+	margin-top: 0;
+}
+
+p:last-child {
+	margin-bottom: 0;
+}

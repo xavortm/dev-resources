@@ -1,0 +1,6 @@
+// As the viewport get smaller, the css rulles must overwrite the ones for
+// bigger screens
+
+@import 'medium';
+@import 'small';
+@import 'retina';

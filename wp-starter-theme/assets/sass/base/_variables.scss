@@ -1,0 +1,56 @@
+// LAYOUT
+// ----------------------------------------------------------------------------
+$layout-section-padding-mobile: 50px;
+$layout-section-padding: 80px;
+$layout-row-width: 1140; // Dont add px here.
+
+// TYPOGRAPHY
+// ----------------------------------------------------------------------------
+
+$fonts-sans: "ProximaNova", "Helvetica Neue", Arial, sans-serif;
+$fonts-serif: Georgia;
+$font-main-size: 16px;
+$font-main-color: #2C2C2C;
+
+// Theme z-indexes
+// ----------------------------------------------------------------------------
+$zIndex-1:   100;
+$zIndex-2:   200;
+$zIndex-3:   300;
+$zIndex-4:   400;
+$zIndex-5:   500;
+$zIndex-6:   600;
+$zIndex-7:   700;
+$zIndex-8:   800;
+$zIndex-9:   900;
+$zIndex-10: 1000;
+
+$zIndex-5--layer-4: 		$zIndex-4;
+
+$zIndex-5--topBar:      	$zIndex-5;
+$zIndex-5--layer-5: 		$zIndex-5;
+
+$zIndex-6--button-scroll: 	$zIndex-6;
+
+// There shouldnt be something more or equal to this level, so we can keep the
+// main menu above all.
+$zIndex-9--siteHeader:      $zIndex-9;
+$zIndex-9--site-menu: 		$zIndex-9;
+
+// Media Queries
+// ----------------------------------------------------------------------------
+
+$break-tablet-landscape-orientation: "orientation: landscape";
+$break-tablet-portrait-orientation: "orientation: portrait";
+$break-tablet-min: 768px;
+$break-tablet-max: 1024px;
+
+$break-iphone-small-min: 320px;
+$break-iphone-small-max: 480px;
+
+// Foundation Media Query Ranges
+// $small-range: (0, 40em) !default;
+// $medium-range: (40.0625em, 64em) !default;
+// $large-range: (64.0625em, 90em) !default;
+// $xlarge-range: (90.0625em, 120em) !default;
+// $xxlarge-range: (120.0625em, 99999999em) !default;
