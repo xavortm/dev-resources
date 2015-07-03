@@ -1,0 +1,42 @@
+// Just to add overal style.
+@import "general";
+
+/**
+ * The actual stuff for the type of images.
+ * ----------------------------------------
+ */
+
+.image-wrapper {
+	height: 250px;
+	max-width: 350px;
+	width: auto;
+
+	&.type-background {
+		background-size: cover;
+
+		&.center {
+			background-position: center center;
+		}
+	}
+
+	&.type-overflow {
+		overflow: hidden;
+	}
+
+	&.type-scale {
+		overflow: hidden;
+
+		img {
+			display: block;
+			max-width: 100%;
+			height: auto !important;
+			width: auto\9; /* ie8+9 */
+			-ms-interpolation-mode: bicubic;
+		}
+
+		&.vheight {
+			height: 30vw;
+			max-height: 250px;
+		}
+	}
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Demo Images</title>
+	<link rel="stylesheet" type="text/css" href="assets/css/master.css">
+</head>
+<body>
+	
+	<section class="demo-wrapper">
+		<div class="demo-section">
+			<header>
+				<h1>Demo for the cases of cropping images.</h1>
+				<p>All examples have 350x250px dimentions</p>
+			</header>
+		</div><!-- /demo-section -->
+
+		<div class="demo-section example">
+			<header>
+				<h4>Example 1: using background image</h4>
+			</header>
+
+			<span class="example-type">Top background</span>
+			<div class="image-wrapper type-background" style="background-image: url(assets/img/img-01.png)"></div>
+
+			<span class="example-type">Center background</span>
+			<div class="image-wrapper type-background center" style="background-image: url(assets/img/img-01.png)"></div>
+		</div>
+
+		<div class="demo-section example">
+			<header>
+				<h4>Example 2: using overflow and no image scale</h4>
+			</header>
+
+			<span class="example-type">No responsive scale of img</span>
+			<div class="image-wrapper type-overflow">
+				<img src="assets/img/img-01.png">
+			</div>
+		</div>
+
+		<div class="demo-section example">
+			<header>
+				<h4>Example 3: using overflow and image scale</h4>
+			</header>
+
+			<span class="example-type">Fixed height</span>
+			<div class="image-wrapper type-scale">
+				<img src="assets/img/img-01.png">
+			</div>
+
+			<span class="example-type">VHeight</span>
+			<div class="image-wrapper type-scale vheight">
+				<img src="assets/img/img-01.png">
+			</div>
+		</div>
+	</section>
+
+	<section class="demo-wrapper">
+		<header>
+			<h1>Images for demo:</h1>
+			<p>Click on the images at the bottom to change the images at the top</p>
+		</header>
+		<div class="images-controller">
+			<div class="demo-img">
+				<span>448x732</span>
+				<img src="assets/img/img-01.png">
+			</div>
+			<div class="demo-img">
+				<span>798x326</span>
+				<img src="assets/img/img-02.png">
+			</div>
+			<div class="demo-img">
+				<span>368x326</span>
+				<img src="assets/img/img-03.png">
+			</div>
+		</div>
+	</section>
+
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="js/scripts.js"></script>
+
+	<!-- the live reload scipt -->
+	<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+</body>
+</html>
